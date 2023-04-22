@@ -1,0 +1,11 @@
+{
+  "name": "Buffalo",
+  "icon": "\uD83D\uDC03",
+  "maxWeight": "700.0",
+  "maxCountInTheLocation": "10",
+  "maxRangeToMove": "3",
+  "foodInKgToFull": "100",
+  "eatingMap": {
+    "plant": "100"
+  }
+}

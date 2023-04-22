@@ -1,0 +1,11 @@
+{
+  "name": "Sheep",
+  "icon": "\uD83D\uDC01",
+  "maxWeight": "70.0",
+  "maxCountInTheLocation": "140",
+  "maxRangeToMove": "31",
+  "foodInKgToFull": "15.0",
+  "eatingMap": {
+    "plant": "100"
+  }
+}

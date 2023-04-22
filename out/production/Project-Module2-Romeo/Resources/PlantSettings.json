@@ -1,0 +1,7 @@
+{
+  "name": "Plant",
+  "icon": "\uD83D\uDC01",
+  "maxWeight": "1.0",
+  "maxCountInTheLocation": "500"
+
+}

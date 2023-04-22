@@ -1,0 +1,19 @@
+{
+  "name": "Wolf",
+  "icon": "\uD83D\uDC3A",
+  "maxWeight": "50.0",
+  "maxCountInTheLocation": "30",
+  "maxRangeToMove": "2",
+  "foodInKgToFull": "2.0",
+  "eatingMap": {
+    "horse": "10",
+    "deer": "15",
+    "rabbit": "60",
+    "mouse": "80",
+    "goat": "60",
+    "sheep": "70",
+    "boar": "15",
+    "buffalo": "10",
+    "duck": "40"
+  }
+}

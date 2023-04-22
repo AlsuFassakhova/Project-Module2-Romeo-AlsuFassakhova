@@ -1,0 +1,10 @@
+{
+  "name": "Caterpillar",
+  "icon": "\uD83D\uDC1B",
+  "maxWeight": "0.01",
+  "maxCountInTheLocation": "1000",
+  "maxRangeToMove": "0",
+  "foodInKgToFull": "0.0",
+  "eatingMap": {
+  }
+}

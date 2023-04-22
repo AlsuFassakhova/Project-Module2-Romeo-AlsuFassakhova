@@ -1,0 +1,14 @@
+{
+  "name": "Boa",
+  "icon": "\uD83D\uDC0D",
+  "maxWeight": "15.0",
+  "maxCountInTheLocation": "30",
+  "maxRangeToMove": "1",
+  "foodInKgToFull": "3.0",
+  "eatingMap": {
+    "fox": "15",
+    "rabbit": "20",
+    "mouse": "40",
+    "duck": "10"
+  }
+}

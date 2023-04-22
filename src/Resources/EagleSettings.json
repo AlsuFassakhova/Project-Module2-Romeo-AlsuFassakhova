@@ -1,0 +1,14 @@
+{
+  "name": "Eagle",
+  "icon": "\uD83E\uDD85",
+  "maxWeight": "6.0",
+  "maxCountInTheLocation": "20",
+  "maxRangeToMove": "3",
+  "foodInKgToFull": "1.0",
+  "eatingMap": {
+    "fox": "10",
+    "rabbit": "90",
+    "mouse": "90",
+    "duck": "80"
+  }
+}

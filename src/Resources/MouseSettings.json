@@ -1,0 +1,12 @@
+{
+  "name": "Mouse",
+  "icon": "\uD83D\uDC01",
+  "maxWeight": "0.05",
+  "maxCountInTheLocation": "500",
+  "maxRangeToMove": "1",
+  "foodInKgToFull": "0.01",
+  "eatingMap": {
+    "caterpillar": "90",
+    "plant": "100"
+  }
+}

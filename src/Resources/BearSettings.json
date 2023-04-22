@@ -1,0 +1,20 @@
+{
+  "name": "Bear",
+  "icon": "\uD83D\uDC3B",
+  "maxWeight": "500.0",
+  "maxCountInTheLocation": "5",
+  "maxRangeToMove": "2",
+  "foodInKgToFull": "80.0",
+  "eatingMap": {
+    "boa": "80",
+    "horse": "40",
+    "deer": "80",
+    "rabbit": "80",
+    "mouse": "90",
+    "goat": "70",
+    "sheep": "70",
+    "boar": "50",
+    "buffalo": "20",
+    "duck": "10"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Deer",
+  "icon": "\uD83D\uDC01",
+  "maxWeight": "300.",
+  "maxCountInTheLocation": "20",
+  "maxRangeToMove": "4",
+  "foodInKgToFull": "50.0",
+  "eatingMap": {
+    "plant": "100"
+  }
+}

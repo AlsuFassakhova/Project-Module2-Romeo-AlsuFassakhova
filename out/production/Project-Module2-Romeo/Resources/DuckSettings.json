@@ -1,0 +1,11 @@
+{
+  "name": "Duck",
+  "icon": "\uD83E\uDD86",
+  "maxWeight": "1.0",
+  "maxCountInTheLocation": "200",
+  "maxRangeToMove": "4",
+  "foodInKgToFull": "0.15",
+  "eatingMap": {
+    "caterpillar": "90",
+    "plant": "100"
+  }  }

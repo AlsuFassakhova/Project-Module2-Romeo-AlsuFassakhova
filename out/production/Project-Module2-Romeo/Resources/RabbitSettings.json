@@ -1,0 +1,11 @@
+{
+  "name": "Rabbit",
+  "icon": "\uD83D\uDC01",
+  "maxWeight": "2.0",
+  "maxCountInTheLocation": "150",
+  "maxRangeToMove": "2",
+  "foodInKgToFull": "0.45",
+  "eatingMap": {
+    "plant": "100"
+  }
+}

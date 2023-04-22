@@ -1,0 +1,11 @@
+{
+  "name": "Goat",
+  "icon": "\uD83D\uDC01",
+  "maxWeight": "60.0",
+  "maxCountInTheLocation": "140",
+  "maxRangeToMove": "3",
+  "foodInKgToFull": "10",
+  "eatingMap": {
+    "plant": "100"
+  }
+}

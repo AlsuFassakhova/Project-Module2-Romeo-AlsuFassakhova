@@ -1,0 +1,14 @@
+{
+  "name": "Fox",
+  "icon": "\uD83E\uDD8A",
+  "maxWeight": "8.0",
+  "maxCountInTheLocation": "30",
+  "maxRangeToMove": "2",
+  "foodInKgToFull": "2.0",
+  "eatingMap": {
+    "rabbit": "70",
+    "mouse": "90",
+    "duck": "60",
+    "caterpillar": "40"
+  }
+}
