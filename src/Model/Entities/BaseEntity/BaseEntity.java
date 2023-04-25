@@ -1,7 +1,6 @@
 package Model.Entities.BaseEntity;
 
 import Interfaces.Reproducible;
-import Model.Entities.BaseEntity.Animal.Predators.Bear;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 

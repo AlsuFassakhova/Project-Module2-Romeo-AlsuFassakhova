@@ -1,11 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Predators;
 
-import Model.Entities.BaseEntity.Animal.Herbivorous.Herbivorous;
 import Model.Entities.BaseEntity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

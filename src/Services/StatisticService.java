@@ -12,7 +12,6 @@ import Model.PlayingField.Location;
 
 
 public class StatisticService {
-    FileReadService fileReadService = new FileReadService();
 
     public void printStatisticsForEachAnimalSpecies() {
         int bearCount = 0;
@@ -64,8 +63,8 @@ public class StatisticService {
                 boaCount, foxCount, eagleCount, sheepCount, deerCount, goatCount,
                 buffaloCount, rabbitCount, duckCount, caterpillarCount);
         System.out.println();
-        System.out.println("Sum: "+sum);
-        }
+        System.out.println("Sum: " + sum);
+    }
 
     public void printStatisticsForGroupOfAnimals() {
         long predatorCount = 0;
@@ -82,6 +81,7 @@ public class StatisticService {
         }
         System.out.printf("Predators: %s, Omnivarouse: %s, herbivarous: %s, Plant: %s",
                 predatorCount, omnivorousCount, herbivorousCount, plantCount);
+        System.out.println();
     }
 
     public void printStatisticsForDiedAnimals() {
@@ -93,9 +93,5 @@ public class StatisticService {
         }
         System.out.printf("Died: %d", diedAnimals);
         System.out.println();
-    }
-
-    public void printStatisticsForNewBornAnimals() {
-        int newAnimals = 0;
     }
 }

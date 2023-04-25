@@ -56,14 +56,5 @@ public class FileReadService {
 
         return chance;
     }
-    public String readIcon(BaseEntity entity){
-        String icon;
-        try {
-            BaseEntity entity1 = objectMapper.readValue(new File(entity.getPathToJsonFile()), entity.getClass());
-            icon = entity1.getIcon();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return icon;
-    }
+
 }

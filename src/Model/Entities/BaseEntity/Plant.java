@@ -3,10 +3,9 @@ package Model.Entities.BaseEntity;
 import Services.AnimalGeneratorServices.AnimalGeneratorService;
 import Services.AnimalGeneratorServices.PlantGenerator;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
