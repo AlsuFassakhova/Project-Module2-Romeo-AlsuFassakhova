@@ -1,7 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Omnivorous;
 
 import Model.Entities.BaseEntity.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,33 +11,31 @@ import java.util.Map;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Duck extends Omnivorous{
+public class Duck extends Omnivorous {
     private String name;
     private String icon;
-    private  double maxWeight = 1.0;
-    private int maxRangeToMove = 4;
-    private int maxCountInTheLocation = 200;
-    private  double foodInKgToFull = 0.15;
-    @JsonIgnore
-    private  double feelingOfSatiety = 0.075;
-    @JsonIgnore
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull * 0.5;
     private boolean isReproducible = true;
-    @JsonIgnore
     private int steps = 0;
     private Map<String, Integer> eatingMap;
-    @JsonIgnore
-    private String pathToJsonFile = "src/Resources/DuckSettings.json";
-    @JsonIgnore
+    private String pathToJsonFile = Constants.pathToDuckJsonFile;
     private int numberOfTryingToEat = 2;
 
-    public Duck(String name) {
-        this.setName(name);
+    public Duck(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
     }
-
 
     @Override
     public BaseEntity createEntity() {
-        return new Duck("Duck");
+        return new Duck();
     }
 
 }

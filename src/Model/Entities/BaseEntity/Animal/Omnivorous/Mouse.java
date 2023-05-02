@@ -1,6 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Omnivorous;
 
 import Model.Entities.BaseEntity.BaseEntity;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,24 +12,30 @@ import java.util.Map;
 @Getter
 @Setter
 public class Mouse extends Omnivorous {
-    private double maxWeight = 0.05;
-    private int maxRangeToMove = 1;
-    private int maxCountInTheLocation = 500;
-    private double foodInKgToFull = 0.01;
-    private double feelingOfSatiety = 0.005;
+    private String name;
+    private String icon;
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull*0.5;
     private boolean isReproducible = true;
     private int steps = 0;
     private Map<String, Integer> eatingMap;
-    private String pathToJsonFile = "src/Resources/MouseSettings.json";
+    private String pathToJsonFile = Constants.pathToMouseJsonFile;
     private int numberOfTryingToEat = 1;
 
-    public Mouse(String name) {
-        this.setName(name);
+    public Mouse(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
     }
 
     @Override
     public BaseEntity createEntity() {
-        return new Mouse("Mouse");
+        return new Mouse();
     }
 
 

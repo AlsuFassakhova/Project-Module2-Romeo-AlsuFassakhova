@@ -1,7 +1,7 @@
 package Model.Entities.BaseEntity;
 
-import Services.AnimalGeneratorServices.AnimalGeneratorService;
-import Services.AnimalGeneratorServices.PlantGenerator;
+import Resources.Constants;
+import Services.AnimalGeneratorServices.PlantGeneratorService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,21 +13,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Plant extends BaseEntity {
-    private double maxWeight = 1;
-    private int maxCountInTheLocation = 500;
-    private String pathToJsonFile = "src/Resources/PlantSettings.json";
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private String pathToJsonFile = Constants.pathToPlantJsonFile;
 
-    public Plant(String name) {
-        this.setName(name);
-    }
 
-    @Override
-    public List<BaseEntity> reproduction(List<BaseEntity> entityList) {
-        AnimalGeneratorService animalGeneratorService = new PlantGenerator();
-        return animalGeneratorService.generateEntity();
+    public List<BaseEntity> reproduction() {
+        PlantGeneratorService plantGenerator = new PlantGeneratorService();
+        return plantGenerator.generate();
 
     }
-
     @Override
     public BaseEntity createEntity() {
         return null;

@@ -15,7 +15,7 @@ import java.util.Map;
 public class FileReadService {
     static ObjectMapper objectMapper = new JsonMapper();
 
-    public String readName(BaseEntity entity) {
+    public static String readName(BaseEntity entity) {
         String name;
         try {
             BaseEntity entity1 = objectMapper.readValue(new File(entity.getPathToJsonFile()), entity.getClass());
@@ -26,7 +26,7 @@ public class FileReadService {
         return name;
     }
 
-    public int readMaxCount(BaseEntity entity) {
+    public static int readMaxCount(BaseEntity entity) {
         int maxCount;
         try {
             BaseEntity entity1 = objectMapper.readValue(new File(entity.getPathToJsonFile()), entity.getClass());
@@ -43,7 +43,7 @@ public class FileReadService {
             Animal animal1 = (Animal) objectMapper.readValue(new File(animal.getPathToJsonFile()), animal.getClass());
             Map<String, Integer> eatingMap = animal1.getEatingMap();
             for (var entity : eatingMap.keySet()) {
-                if (entity.equalsIgnoreCase(food.getName())) {
+                if (entity.equalsIgnoreCase(FileReadService.readName(food))) {
                     chance = eatingMap.get(entity);
                     break;
                 }
@@ -57,4 +57,47 @@ public class FileReadService {
         return chance;
     }
 
+    public static String readIcon(BaseEntity entity) {
+        String icon;
+        try {
+            BaseEntity entity1 = objectMapper.readValue(new File(entity.getPathToJsonFile()), entity.getClass());
+            icon = entity1.getIcon();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return icon;
+    }
+
+    public static double readMaxWeight(BaseEntity entity) {
+        double maxWeight;
+        try {
+            BaseEntity entity1 = objectMapper.readValue(new File(entity.getPathToJsonFile()), entity.getClass());
+            maxWeight = entity1.getMaxWeight();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return maxWeight;
+    }
+
+    public static double readFoodInKgToFull(Animal animal) {
+        double foodInKgToFull;
+        try {
+            BaseEntity entity1 = objectMapper.readValue(new File(animal.getPathToJsonFile()), animal.getClass());
+            foodInKgToFull = entity1.getFoodInKgToFull();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return foodInKgToFull;
+    }
+
+    public static int readMaxRangeToMove(BaseEntity entity) {
+        int maxRangeToMove;
+        try {
+            BaseEntity entity1 = objectMapper.readValue(new File(entity.getPathToJsonFile()), entity.getClass());
+            maxRangeToMove = entity1.getMaxRangeToMove();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return maxRangeToMove;
+    }
 }

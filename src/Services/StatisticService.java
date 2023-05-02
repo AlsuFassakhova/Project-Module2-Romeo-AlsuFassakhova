@@ -6,9 +6,13 @@ import Model.Entities.BaseEntity.Animal.Omnivorous.Duck;
 import Model.Entities.BaseEntity.Animal.Omnivorous.Mouse;
 import Model.Entities.BaseEntity.Animal.Omnivorous.Omnivorous;
 import Model.Entities.BaseEntity.Animal.Predators.*;
+import Model.Entities.BaseEntity.BaseEntity;
 import Model.Entities.BaseEntity.Plant;
 import Model.PlayingField.IslandModel;
 import Model.PlayingField.Location;
+import Services.AnimalGeneratorServices.EntitiesGeneratorService;
+
+import java.util.Set;
 
 
 public class StatisticService {
@@ -33,7 +37,6 @@ public class StatisticService {
 
         for (Location[] locations : IslandModel.locations) {
             for (Location location : locations) {
-
                 bearCount += location.getEntityList().stream().filter(x -> x instanceof Bear).count();
                 wolfCount += location.getEntityList().stream().filter(x -> x instanceof Wolf).count();
                 horseCount += location.getEntityList().stream().filter(x -> x instanceof Horse).count();
@@ -53,9 +56,7 @@ public class StatisticService {
 
             }
         }
-        int sum = bearCount + wolfCount + horseCount + mouseCount + boarCount + plantCount +
-                boaCount + foxCount + eagleCount + sheepCount + deerCount + goatCount +
-                buffaloCount + rabbitCount + duckCount + caterpillarCount;
+
         System.out.printf("Bear: %d, Wolf: %d, Horse: %d, Mouse: %d, Boar: %d, Plant: %d " +
                         "Boa: %d, Fox: %d, Eagle: %d, Sheep: %d, Deer: %d, Goat: %d " +
                         "Buffalo: %d, Rabbit: %d, Duck: %d, Caterpillar: %d",
@@ -63,7 +64,6 @@ public class StatisticService {
                 boaCount, foxCount, eagleCount, sheepCount, deerCount, goatCount,
                 buffaloCount, rabbitCount, duckCount, caterpillarCount);
         System.out.println();
-        System.out.println("Sum: " + sum);
     }
 
     public void printStatisticsForGroupOfAnimals() {
@@ -79,7 +79,7 @@ public class StatisticService {
                 plantCount += location.getEntityList().stream().filter(x -> x instanceof Plant).count();
             }
         }
-        System.out.printf("Predators: %s, Omnivarouse: %s, herbivarous: %s, Plant: %s",
+        System.out.printf("Predators: %s, Omnivorous: %s, Herbivorous: %s, Plant: %s",
                 predatorCount, omnivorousCount, herbivorousCount, plantCount);
         System.out.println();
     }
@@ -92,6 +92,17 @@ public class StatisticService {
             }
         }
         System.out.printf("Died: %d", diedAnimals);
+        System.out.println();
+    }
+
+    public void printStatisticForNewBornAnimals() {
+        int newBorn = 0;
+        for (Location[] locations : IslandModel.locations) {
+            for (Location location : locations) {
+                newBorn = location.getNewBornAnimals();
+            }
+        }
+        System.out.printf("Born: %d", newBorn);
         System.out.println();
     }
 }

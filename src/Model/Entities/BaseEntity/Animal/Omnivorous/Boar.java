@@ -4,8 +4,8 @@ import Model.Entities.BaseEntity.Animal.Herbivorous.Caterpillar;
 import Model.Entities.BaseEntity.BaseEntity;
 import Model.Entities.BaseEntity.Plant;
 
+import Resources.Constants;
 import Services.FileReadService;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,30 +22,28 @@ import java.util.Random;
 public class Boar extends Omnivorous {
     private String name;
     private String icon;
-    private  double maxWeight = 400.0;
-    private int maxRangeToMove = 2;
-    private int maxCountInTheLocation = 50;
-    private  double foodInKgToFull = 50.0;
-    @JsonIgnore
-    private  double feelingOfSatiety = 25.0;
-    @JsonIgnore
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull * 0.5;
     private boolean isReproducible = true;
-    @JsonIgnore
     private int steps = 0;
     private Map<String, Integer> eatingMap;
-    @JsonIgnore
-    private String pathToJsonFile = "src/Resources/BoarSettings.json";
-    @JsonIgnore
+    private String pathToJsonFile = Constants.pathToBoarJsonFile;
     private int numberOfTryingToEat = 8;
 
-    public Boar(String name) {
-        this.setName(name);
+    public Boar(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
     }
-
 
     @Override
     public BaseEntity createEntity() {
-        return new Boar("Boar");
+        return new Boar();
     }
 
 
@@ -61,7 +59,7 @@ public class Boar extends Omnivorous {
                 BaseEntity entity = food.get(index);
                 if (entity.isAlive()) {
                     int chance = random.nextInt(0, 100);
-                    int chanceToEat = FileReadService.chanceToEat(this,entity);
+                    int chanceToEat = FileReadService.chanceToEat(this, entity);
                     if (chance < chanceToEat) {
                         setFeelingOfSatiety((Math.min((getFeelingOfSatiety() + entity.getMaxWeight()), getFoodInKgToFull())));
                         entity.setAlive(false);

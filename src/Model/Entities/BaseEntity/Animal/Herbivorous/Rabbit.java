@@ -1,6 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Herbivorous;
 
 import Model.Entities.BaseEntity.BaseEntity;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,22 +10,26 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Rabbit extends Herbivorous {
-    private double maxWeight = 2.0;
-    private int maxRangeToMove = 2;
-    private int maxCountInTheLocation = 160;
-    private double foodInKgToFull = 0.45;
-    private double feelingOfSatiety = 0.2;
+    private String name;
+    private String icon;
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull * 0.5;
     private int steps = 0;
     private boolean isReproducible = true;
     private int numberOfTryingToEat = 1;
-    private String pathToJsonFile = "src/Resources/RabbitSettings.json";
-
-    public Rabbit(String name) {
-        this.setName(name);
+    private String pathToJsonFile = Constants.pathToRabbitJsonFile;
+    public Rabbit(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
     }
-
     @Override
     public BaseEntity createEntity() {
-        return new Rabbit("Rabbit");
+        return new Rabbit();
     }
 }

@@ -17,18 +17,19 @@ public abstract class Predator extends Animal {
 
     @Override
     public void eat(List<BaseEntity> entityList) {
-        int numberOfTryingToEat = 4;
+        int numberOfTryingToEat = 6;
         Random random = new Random();
+        double foodInKgToFull = FileReadService.readFoodInKgToFull(this);
         for (int i = 0; i < numberOfTryingToEat; i++) {
-            if (getFeelingOfSatiety() < getFoodInKgToFull() && entityList.size() > 0) {
+            if (getFeelingOfSatiety() < foodInKgToFull && entityList.size() > 0) {
                 int index = random.nextInt(0, entityList.size());
                 BaseEntity hb = entityList.get(index);
                 if (hb.isAlive()) {
-                    int chanceToEat = FileReadService.chanceToEat(this,hb);
+                    int chanceToEat = FileReadService.chanceToEat(this, hb);
                     int chance = random.nextInt(0, 100);
                     if (chance < chanceToEat) {
-                        setFeelingOfSatiety((Math.min((getFeelingOfSatiety() + hb.getMaxWeight()),
-                                getFoodInKgToFull())));
+                        setFeelingOfSatiety((Math.min((getFeelingOfSatiety() + FileReadService.readMaxWeight(hb)),
+                                foodInKgToFull)));
                         hb.setAlive(false);
                     }
                 }

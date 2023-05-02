@@ -1,17 +1,11 @@
 package Model.Entities.BaseEntity.Animal.Predators;
 
-import Model.Entities.BaseEntity.Animal.Herbivorous.Herbivorous;
 import Model.Entities.BaseEntity.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
 
@@ -21,28 +15,27 @@ import java.util.Map;
 public class Wolf extends Predator {
     private String name;
     private String icon;
-    private double maxWeight = 50.0;
-    private int maxRangeToMove = 3;
-    private int maxCountInTheLocation = 30;
-    private double foodInKgToFull = 8.0;
-    @JsonIgnore
-    private double feelingOfSatiety = 4.0;
-    @JsonIgnore
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull * 0.5;
     private int steps = 0;
-    @JsonIgnore
     private boolean isReproducible = true;
     private Map<String, Integer> eatingMap;
-    @JsonIgnore
-    private String pathToJsonFile = "src/Resources/WolfSettings.json";
+    private String pathToJsonFile = Constants.pathToWolfJsonFile;
 
-    public Wolf(String name) {
-        this.setName(name);
+    public Wolf(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
     }
-
 
     @Override
     public BaseEntity createEntity() {
-        return new Wolf("Wolf");
+        return new Wolf();
     }
 
 

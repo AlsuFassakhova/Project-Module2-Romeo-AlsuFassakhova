@@ -1,6 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Herbivorous;
 
 import Model.Entities.BaseEntity.BaseEntity;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,22 +10,28 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Buffalo extends Herbivorous{
-    private double maxWeight = 700.0;
-    private int maxRangeToMove = 3;
-    private int maxCountInTheLocation = 10;
-    private double foodInKgToFull = 100.0;
-    private double feelingOfSatiety = 50.0;
+    private String name;
+    private String icon;
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull*0.5;
     private int steps = 0;
     private boolean isReproducible = true;
-    private int numberOfTryingToEat = 20;
-    private String pathToJsonFile = "src/Resources/BuffaloSettings.json";
+    private int numberOfTryingToEat = 50;
+    private String pathToJsonFile = Constants.pathToBuffaloJsonFile;
 
-    public Buffalo(String name) {
-        this.setName(name);
+    public Buffalo(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
     }
 
     @Override
     public BaseEntity createEntity() {
-        return new Buffalo("Buffalo");
+        return new Buffalo();
     }
 }

@@ -1,7 +1,5 @@
 package Model.Entities.BaseEntity;
 
-import Interfaces.Reproducible;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 
@@ -10,19 +8,21 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public abstract class BaseEntity implements Reproducible {
+public abstract class BaseEntity implements Cloneable {
+    private String pathToJsonFile;
     private String name;
     private String icon;
     private double maxWeight;
     private int maxCountInTheLocation;
     private int maxRangeToMove;
-    @JsonIgnore
+    private double foodInKgToFull;
     private int steps;
-    @JsonIgnore
     private boolean isReproducible = true;
-    @JsonIgnore
     private boolean isAlive = true;
-    @JsonIgnore
-    private String pathToJsonFile;
 
-    public abstract BaseEntity createEntity();}
+    public abstract BaseEntity createEntity();
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}

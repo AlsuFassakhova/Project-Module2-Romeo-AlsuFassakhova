@@ -1,6 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Herbivorous;
 
 import Model.Entities.BaseEntity.BaseEntity;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,23 +9,29 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Sheep extends Herbivorous{
-    private double maxWeight = 70.0;
-    private int maxRangeToMove = 3;
-    private int maxCountInTheLocation = 150;
-    private double foodInKgToFull = 15.0;
-    private double feelingOfSatiety = 7.5;
+public class Sheep extends Herbivorous {
+    private String name;
+    private String icon;
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
+    private double foodInKgToFull;
+    private double feelingOfSatiety = foodInKgToFull * 0.5;
     private int steps = 0;
     private boolean isReproducible = true;
     private int numberOfTryingToEat = 5;
-    private String pathToJsonFile = "src/Resources/SheepSettings.json";
+    private String pathToJsonFile = Constants.pathToSheepJsonFile;
 
-    public Sheep(String name) {
-        this.setName(name);
+    public Sheep(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove, double foodInKgToFull) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
+        this.foodInKgToFull = foodInKgToFull;
+    }
+        @Override
+        public BaseEntity createEntity () {
+            return new Sheep();
+        }
     }
 
-    @Override
-    public BaseEntity createEntity() {
-        return new Sheep("Sheep");
-    }
-}

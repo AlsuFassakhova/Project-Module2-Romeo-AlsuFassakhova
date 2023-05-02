@@ -2,7 +2,9 @@ package Model.Entities.BaseEntity.Animal;
 
 import Interfaces.Eatable;
 import Interfaces.Movable;
+import Interfaces.Reproducible;
 import Model.Entities.BaseEntity.BaseEntity;
+import Services.FileReadService;
 import Services.RandomService;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,15 +14,14 @@ import java.util.*;
 
 @Getter
 @Setter
-public abstract class Animal extends BaseEntity implements Movable, Eatable {
+public abstract class Animal extends BaseEntity implements Movable, Eatable, Reproducible {
     private double foodInKgToFull;
-    private double feelingOfSatiety;
+    private double feelingOfSatiety = foodInKgToFull * 0.5;
     private int numberOfTryingToEat;
     private Map<String, Integer> eatingMap;
 
     @Override
-    public List<BaseEntity> reproduction(List<BaseEntity> entityList) {
-        List<BaseEntity> newEntity = new ArrayList<>();
+    public Animal reproduction(List<BaseEntity> entityList) {
         if (isReproducible()) {
             BaseEntity partner = null;
             for (var animal : entityList) {
@@ -32,16 +33,17 @@ public abstract class Animal extends BaseEntity implements Movable, Eatable {
             if (partner != null) {
                 setReproducible(false);
                 partner.setReproducible(false);
-                newEntity.add(createEntity());
+                return (Animal) createEntity();
             }
         }
-        return newEntity;
+        return null;
     }
 
     public int[] move() {
-        int range = RandomService.getNumber(1, getMaxRangeToMove() + 1);
+        int range = RandomService.getNumber(1, FileReadService.readMaxRangeToMove(this) + 1);
         int direction = RandomService.getNumber(0, 4);
-        setFeelingOfSatiety(getFeelingOfSatiety() - getFoodInKgToFull() * 0.25);
+        double energyDown = FileReadService.readFoodInKgToFull(this)/4;
+        setFeelingOfSatiety(getFeelingOfSatiety() - energyDown);
         if (getFeelingOfSatiety() <= 0) setAlive(false);
         return new int[]{direction, range};
     }

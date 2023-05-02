@@ -1,6 +1,7 @@
 package Model.Entities.BaseEntity.Animal.Herbivorous;
 
 import Model.Entities.BaseEntity.BaseEntity;
+import Resources.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,24 +10,24 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Caterpillar extends Herbivorous {
-    private static final double MAX_WEIGHT = 0.01;
-    private int maxRangeToMove = 0;
-    private int maxCountInTheLocation = 1000;
-    public static final int MAX_COUNT = 1000;
-    private final double FOOD_TO_FULL = 0;
-    private double feelingOfSatiety = 0;
+    private String name;
+    private String icon;
+    private double maxWeight;
+    private int maxCountInTheLocation;
+    private int maxRangeToMove;
     private boolean isReproducible = true;
-    private int steps = 0;
-    private int numberOfTryingToEat = 0;
-    private String pathToJsonFile = "src/Resources/CaterpillarSettings.json";
+    private String pathToJsonFile = Constants.pathToCaterpillarJsonFile;
 
-    public Caterpillar(String name) {
-        this.setName(name);
+    public Caterpillar(String icon, double maxWeight, int maxCountInTheLocation, int maxRangeToMove) {
+        this.icon = icon;
+        this.maxWeight = maxWeight;
+        this.maxCountInTheLocation = maxCountInTheLocation;
+        this.maxRangeToMove = maxRangeToMove;
     }
 
     @Override
     public BaseEntity createEntity() {
-        return new Caterpillar("Caterpillar");
+        return new Caterpillar();
     }
 
 }

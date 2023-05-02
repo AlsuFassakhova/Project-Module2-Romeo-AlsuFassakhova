@@ -8,17 +8,19 @@ import Services.RandomService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantGenerator implements AnimalGeneratorService {
+public class PlantGeneratorService {
     Plant plant = new Plant();
 
-    @Override
-    public List<BaseEntity> generateEntity() {
+
+    public List<BaseEntity> generate() {
         List<BaseEntity> list = new ArrayList<>();
-        FileReadService fileReadService = new FileReadService();
-        String name = fileReadService.readName(plant);
-        int count = fileReadService.readMaxCount(plant);
+        int count = FileReadService.readMaxCount(plant);
         for (int i = 0; i < RandomService.getNumber(0, count + 1); i++) {
-            list.add(new Plant(name));
+            try {
+                list.add((BaseEntity) plant.clone());
+            } catch (CloneNotSupportedException e) {
+                throw new RuntimeException(e);
+            }
         }
         return list;
     }
