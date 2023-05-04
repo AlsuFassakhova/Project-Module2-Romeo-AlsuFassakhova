@@ -20,7 +20,6 @@ public abstract class Animal extends BaseEntity implements Movable, Eatable, Rep
     private int numberOfTryingToEat;
     private Map<String, Integer> eatingMap;
 
-    @Override
     public Animal reproduction(List<BaseEntity> entityList) {
         if (isReproducible()) {
             BaseEntity partner = null;
